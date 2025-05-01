@@ -1,221 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joel Dwyer - Expert MS Access & VBA Developer</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f0f4f8;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background: linear-gradient(135deg, #004080, #0073e6);
-            color: #fff;
-            text-align: center;
-            padding: 60px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-            font-weight: 700;
-        }
-        header p {
-            font-size: 1.3em;
-            margin: 10px 0;
-        }
-        .cta-button {
-            display: inline-block;
-            background: #ff6f61;
-            color: #fff;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .cta-button:hover {
-            background: #e65a50;
-        }
-        section {
-            padding: 40px 20px;
-            margin: 20px 0;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        section h2 {
-            color: #004080;
-            font-size: 2em;
-            margin: 0 0 20px;
-            text-align: center;
-        }
-        .intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .intro p {
-            font-size: 1.2em;
-            color: #555;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .project-card {
-            background: #f9f9f9;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-        }
-        .project-card h3 {
-            color: #004080;
-            margin: 0 0 10px;
-        }
-        .project-card p {
-            color: #666;
-            font-size: 0.95em;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            text-align: center;
-        }
-        .skill-item {
-            padding: 20px;
-            background: #e6f0fa;
-            border-radius: 8px;
-        }
-        .contact {
-            text-align: center;
-            background: #004080;
-            color: #fff;
-            padding: 40px 20px;
-            border-radius: 10px;
-        }
-        .contact a {
-            color: #ff6f61;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .contact a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #333;
-            color: #fff;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            header p {
-                font-size: 1.1em;
-            }
-            .projects-grid, .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Joel Dwyer</h1>
-            <p>Expert MS Access & VBA Developer Crafting Innovative Solutions</p>
-            <p>Transforming Complex Business Challenges into Efficient Applications</p>
-            <a href="mailto:joelfdwyer@gmail.com" class="cta-button">Hire Me Today</a>
-        </header>
-
-        <section class="intro">
-            <h2>Why Choose Me?</h2>
-            <p>I specialize in building custom MS Access and VBA applications that solve real-world business problems. From manufacturing to mobile apps, my diverse portfolio showcases innovative solutions that drive efficiency and modernization.</p>
-        </section>
-
-        <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>COPS (Crucible Order Processing System)</h3>
-                    <p>Streamlined order fulfillment in specialty steel manufacturing with optimized cut calculations, reducing waste and boosting efficiency.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Charge & Product Application</h3>
-                    <p>Developed a touchscreen-based system for mill workers, replacing outdated paper processes with real-time data entry.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Metallurgical Testing Program</h3>
-                    <p>Customer and Grade-level metallurgical testing requirements appear when material is logged in to the Met Lab.  Results are entered, and the program assigns a pass/fail status to the test.  Results are available for product certification at shipping.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Traffic System</h3>
-                    <p>Provides a user-friendly screen for assigning orders to loads, and loads to trucks for shipping.  Generates all needed paperwork.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Personnel Scheduling and Payroll</h3>
-                    <p>Supervisors create their employees' work schedules.  After the work-week is complete, Supervisors can modify the past schedule and verify the work hours.  The program will then convert the work hours to Earning codes, hours and pay for payroll processing.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Mobile Work Order System</h3>
-                    <p>Built a cross-platform mobile app integrated with PC-based maintenance systems, enhancing operational mobility.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Web-Based Customer Document Retrieval</h3>
-                    <p>Created a secure, web-based portal for customers to access invoices and certifications, powered by Altova MobileTogether.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>My Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <strong>Custom Applications</strong><br>MS Access, VBA, Visual Basic, SQL
-                </div>
-                <div class="skill-item">
-                    <strong>Web & Mobile Solutions</strong><br>Altova MobileTogether, Android/iOS Apps
-                </div>
-                <div class="skill-item">
-                    <strong>Industry Impact</strong><br>Manufacturing, Inventory, Payroll, Metallurgical Testing
-                </div>
-                <div class="skill-item">
-                    <strong>Multimedia Tools</strong><br>Adobe Captivate, Photoshop, Audition
-                </div>
-            </div>
-        </section>
-
-        <section class="contact">
-            <h2>Ready to Collaborate?</h2>
-            <p>Let’s build something extraordinary for your business.</p>
-            <p>Email: <a href="mailto:joelfdwyer@gmail.com">joelfdwyer@gmail.com</a> | LinkedIn: <a href="https://www.linkedin.com/in/joel-dwyer-166292247">View Profile</a></p>
-        </section>
-
-        <footer>
-            <p>© 2025 Joel Dwyer. All rights reserved.</p>
-        </footer>
+<section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <h3>COPS (Crucible Order Processing System)</h3>
+            <p>Streamlined order fulfillment in specialty steel manufacturing with optimized cut calculations, reducing waste and boosting efficiency.</p>
+            <p><a href="Images/screenshot.jpg" target="_blank">View Screenshot</a></p>
+        </div>
+        <div class="project-card">
+            <h3>Charge & Product Application</h3>
+            <p>Developed a touchscreen-based system for mill workers, replacing outdated paper processes with real-time data entry.</p>
+            <p><a href="Images/screenshot.jpg" target="_blank">View Screenshot</a></p>
+        </div>
+        <div class="project-card">
+            <h3>Metallurgical Testing Program</h3>
+            <p>Customer and Grade-level metallurgical testing requirements appear when material is logged in to the Met Lab. Results are entered, and the program assigns a pass/fail status to the test. Results are available for product certification at shipping.</p>
+            <p><a href="Images/screenshot.jpg" target="_blank">View Screenshot</a></p>
+        </div>
+        <div class="project-card">
+            <h3>Traffic System</h3>
+            <p>Provides a user-friendly screen for assigning orders to loads, and loads to trucks for shipping. Generates all needed paperwork.</p>
+            <p><a href="Images/screenshot.jpg" target="_blank">View Screenshot</a></p>
+        </div>
+        <div class="project-card">
+            <h3>Personnel Scheduling and Payroll</h3>
+            <p>Supervisors create their employees' work schedules. After the work-week is complete, Supervisors can modify the past schedule and verify the work hours. The program will then convert the work hours to Earning codes, hours and pay for payroll processing.</p>
+            <p><a href="Images/screenshot.jpg" target="_blank">View Screenshot</a></p>
+        </div>
+        <div class="project-card">
+            <h3>Mobile Work Order System</h3>
+            <p>Built a cross-platform mobile app integrated with PC-based maintenance systems, enhancing operational mobility.</p>
+            <p><a href="Images/screenshot.jpg" target="_blank">View Screenshot</a></p>
+        </div>
+        <div class="project-card">
+            <h3>Web-Based Customer Document Retrieval</h3>
+            <p>Created a secure, web-based portal for customers to access invoices and certifications, powered by Altova MobileTogether.</p>
+            <p><a href="Images/screenshot.jpg" target="_blank">View Screenshot</a></p>
+        </div>
     </div>
-</body>
-</html>
+</section>
