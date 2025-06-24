@@ -1,0 +1,242 @@
+/* Steel-inspired styles */
+:root {
+  --steel-bg: #23272b;
+  --steel-light: #a8b2bd;
+  --steel-dark: #131619;
+  --accent: #e25822;
+  --card-bg: #2d3136e6;
+  --border: #4d565e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, var(--steel-bg), var(--steel-dark));
+  color: var(--steel-light);
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+header {
+  background: linear-gradient(120deg, #3b4045 60%, #a8b2bd 100%);
+  box-shadow: 0 2px 8px #0006;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 2em;
+  background: transparent;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--steel-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--steel-light);
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.hero {
+  text-align: center;
+  padding: 3em 1em 2em;
+  background: linear-gradient(100deg, #454b52 50%, #a8b2bd 100%);
+  border-bottom: 4px solid var(--accent);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: #fff;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 4px 12px #0008;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  margin-top: 0.7em;
+  color: var(--accent);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+main {
+  padding: 2em 1em;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px #0003;
+  border: 1px solid var(--border);
+  margin-bottom: 2em;
+  padding: 2em;
+  transition: box-shadow 0.2s;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 1.5em;
+}
+
+.card ul {
+  margin: 1em 0 0 1.2em;
+}
+
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+#contactForm input,
+#contactForm textarea {
+  padding: 0.7em;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: #23272b;
+  color: var(--steel-light);
+  font-size: 1em;
+}
+
+#contactForm textarea {
+  resize: vertical;
+  min-height: 80px;
+  max-height: 200px;
+}
+
+#contactForm button {
+  padding: 0.9em 1.4em;
+  border: none;
+  border-radius: 7px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#contactForm button:hover {
+  background: #c14213;
+}
+
+#form-message {
+  margin-top: 0.5em;
+  min-height: 1.2em;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.contact-info {
+  font-size: 0.95em;
+  color: var(--steel-light);
+  margin-top: 1.2em;
+}
+
+footer {
+  text-align: center;
+  padding: 1em;
+  background: #22262b;
+  color: #aaa;
+  font-size: 0.95em;
+  letter-spacing: 0.5px;
+  border-top: 1px solid var(--border);
+}
+
+/* Rolling mill accent effect */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    #e25822 0 4px,
+    #fff2 4px 8px,
+    #3b4045 8px 16px
+  );
+  opacity: 0.55;
+  animation: roll-bar 2s linear infinite;
+}
+@keyframes roll-bar {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 64px; }
+}
+
+/* Responsive styles */
+@media (max-width: 700px) {
+  .navbar {
+    padding: 1em;
+  }
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #23272bee;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 180px;
+    display: none;
+    box-shadow: 0 2px 8px #0009;
+    border-radius: 0 0 0 14px;
+    z-index: 10;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero h1 {
+    font-size: 1.5em;
+  }
+  main {
+    padding: 1em 0.3em;
+  }
+  .card {
+    padding: 1.1em 0.7em;
+  }
+}
+  
