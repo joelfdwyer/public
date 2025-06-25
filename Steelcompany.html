@@ -1,79 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Steel Manufacturing Company</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">[Company Name]</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#capabilities">Capabilities</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
-    </nav>
-    <section class="hero">
-      <h1>Forging the Future of Steel</h1>
-      <p class="subtitle">Precision Melting, Rolling, and Finishing</p>
-    </section>
-  </header>
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-  <main>
-    <section id="about" class="card">
-      <h2>About Us</h2>
-      <p>
-        [Company Name] is a leader in steel manufacturing, specializing in high-quality melting, rolling, and finishing processes.  
-        With decades of experience, we deliver strength and reliability for industries worldwide.
-      </p>
-    </section>
+export default function CujoSteel() {
+  const [activeSection, setActiveSection] = useState("home");
 
-    <section id="products" class="card">
-      <h2>Our Products</h2>
-      <ul>
-        <li>Hot Rolled Steel Bars</li>
-        <li>Precision Cold Rolled Strips</li>
-        <li>Custom Steel Billets</li>
-        <li>Alloy & Specialty Steels</li>
-      </ul>
-    </section>
+  const sections = ["home", "products", "quality", "team", "history", "contact", "news"];
 
-    <section id="capabilities" class="card">
-      <h2>Capabilities & Services</h2>
-      <ul>
-        <li>Modern melting furnaces with strict quality control</li>
-        <li>State-of-the-art rolling mills for consistent gauges</li>
-        <li>Advanced finishing for surface perfection</li>
-        <li>Custom orders and metallurgical support</li>
-      </ul>
-    </section>
+  return (
+    <div className="min-h-screen bg-zinc-100 text-gray-900 font-sans">
+      <header className="bg-white shadow-md p-4 border-b border-gray-300">
+        <h1 className="text-4xl font-bold text-indigo-700">Cujo Steel</h1>
+        <nav className="mt-2 flex flex-wrap gap-4 text-indigo-500">
+          {sections.map((section) => (
+            <button
+              key={section}
+              onClick={() => setActiveSection(section)}
+              className={`hover:text-indigo-700 transition-all duration-200 ${activeSection === section ? "underline underline-offset-4 text-indigo-700" : ""}`}
+            >
+              {section === "home"
+                ? "Home"
+                : section === "products"
+                ? "Our Products"
+                : section === "quality"
+                ? "Our Quality"
+                : section === "team"
+                ? "Our Sales Team"
+                : section === "history"
+                ? "Our History"
+                : section === "contact"
+                ? "Contact Us"
+                : "News"}
+            </button>
+          ))}
+        </nav>
+      </header>
 
-    <section id="contact" class="card">
-      <h2>Contact Us</h2>
-      <form id="contactForm">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-        <div id="form-message"></div>
-      </form>
-      <div class="contact-info">
-        <p><strong>Email:</strong> info@steelcompany.com</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Address:</strong> 123 Steel Mill Rd, Industrial City, USA</p>
-      </div>
-    </section>
-  </main>
+      <main className="p-6 pt-10 space-y-16 min-h-[60vh] relative">
+        <AnimatePresence mode="wait">
+          <motion.section
+            key={activeSection}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.5 }}
+            className="w-full absolute top-0 left-0"
+          >
+            <div className="relative z-10">
+              {activeSection === "home" && (
+                <div id="home">
+                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Welcome to Cujo Steel</h2>
+                  <p className="text-lg">Forging strength and trust—Cujo Steel delivers premium specialty steel with uncompromising service and precision.</p>
+                </div>
+              )}
 
-  <footer>
-    <p>&copy; 2025 [Company Name]. All rights reserved.</p>
-  </footer>
+              {activeSection === "products" && (
+                <div id="products">
+                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Our Products</h2>
+                  <p>We offer a full line of carbon, alloy, and tool steels—cut to spec, heat treated, and ready for machining or fabrication.</p>
+                </div>
+              )}
 
-  <script src="script.js"></script>
-</body>
-</html>
+              {activeSection === "quality" && (
+                <div id="quality">
+                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Our Quality</h2>
+                  <p>Every bar, plate, and billet is backed by certified metallurgical reports. Our lab ensures conformance to ASTM, SAE, and customer specs.</p>
+                </div>
+              )}
+
+              {activeSection === "team" && (
+                <div id="team">
+                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Our Sales Team</h2>
+                  <p>Meet the experienced professionals who understand your needs—whether you're buying a truckload or a single piece for prototyping.</p>
+                </div>
+              )}
+
+              {activeSection === "history" && (
+                <div id="history">
+                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Our History</h2>
+                  <p>Founded by veterans of the specialty steel trade, Cujo Steel blends tradition with innovation in every product we ship.</p>
+                </div>
+              )}
+
+              {activeSection === "contact" && (
+                <div id="contact">
+                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Contact Us</h2>
+                  <p>Email: sales@cujosteel.com<br/>Phone: (555) 123‑STEEL<br/>Location: 1234 Mill Road, Forge City, NY</p>
+                </div>
+              )}
+
+              {activeSection === "news" && (
+                <div id="news">
+                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">News</h2>
+                  <p>Check back soon for the latest updates and announcements from Cujo Steel.</p>
+                </div>
+              )}
+            </div>
+          </motion.section>
+        </AnimatePresence>
+      </main>
+
+      <footer className="bg-white text-center p-4 text-sm text-gray-500 border-t border-gray-300">
+        &copy; {new Date().getFullYear()} Cujo Steel. All rights reserved.
+      </footer>
+    </div>
+  );
+}
