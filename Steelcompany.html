@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: sans-serif;
-      background-color: #f8f8f8;
+      background-color: #f9fafb;
       color: #1a1a1a;
     }
     header {
@@ -29,23 +29,52 @@
       gap: 1rem;
     }
     nav a {
+      position: relative;
       text-decoration: none;
       color: #6366f1;
       font-weight: 500;
+      transition: color 0.2s ease;
     }
-    nav a.active, nav a:hover {
+    nav a::after {
+      content: \"\";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      height: 2px;
+      width: 100%;
+      background-color: #4f46e5;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+    nav a.active {
       color: #1e3a8a;
-      text-decoration: underline;
+    }
+    nav a.active::after {
+      transform: scaleX(1);
     }
     main {
       padding: 2rem;
       min-height: 60vh;
+      position: relative;
     }
     section {
       display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
     }
-    section.active {
+    section.show {
       display: block;
+    }
+    section.fade-in {
+      opacity: 1;
     }
     h2 {
       border-bottom: 2px solid #a5b4fc;
@@ -68,62 +97,60 @@
   <header>
     <h1>Cujo Steel</h1>
     <nav>
-      <a href="#" data-section="home" class="active">Home</a>
-      <a href="#" data-section="products">Our Products</a>
-      <a href="#" data-section="quality">Our Quality</a>
-      <a href="#" data-section="team">Our Sales Team</a>
-      <a href="#" data-section="history">Our History</a>
-      <a href="#" data-section="contact">Contact Us</a>
-      <a href="#" data-section="news">News</a>
+      <a href=\"#\" data-section=\"home\" class=\"active\">Home</a>
+      <a href=\"#\" data-section=\"products\">Our Products</a>
+      <a href=\"#\" data-section=\"quality\">Our Quality</a>
+      <a href=\"#\" data-section=\"team\">Our Sales Team</a>
+      <a href=\"#\" data-section=\"history\">Our History</a>
+      <a href=\"#\" data-section=\"contact\">Contact Us</a>
+      <a href=\"#\" data-section=\"news\">News</a>
     </nav>
   </header>
 
   <main>
-    <section id="home" class="active">
+    <section id=\"home\" class=\"show fade-in\">
       <h2>Welcome to Cujo Steel</h2>
       <p>Forging strength and trust—Cujo Steel delivers premium specialty steel with uncompromising service and precision.</p>
     </section>
 
-    <section id="products">
+    <section id=\"products\">
       <h2>Our Products</h2>
       <p>We offer a full line of carbon, alloy, and tool steels—cut to spec, heat treated, and ready for machining or fabrication.</p>
     </section>
 
-    <section id="quality">
+    <section id=\"quality\">
       <h2>Our Quality</h2>
       <p>Every bar, plate, and billet is backed by certified metallurgical reports. Our lab ensures conformance to ASTM, SAE, and customer specs.</p>
     </section>
 
-    <section id="team">
+    <section id=\"team\">
       <h2>Our Sales Team</h2>
       <p>Meet the experienced professionals who understand your needs—whether you're buying a truckload or a single piece for prototyping.</p>
     </section>
 
-    <section id="history">
+    <section id=\"history\">
       <h2>Our History</h2>
       <p>Founded by veterans of the specialty steel trade, Cujo Steel blends tradition with innovation in every product we ship.</p>
     </section>
 
-    <section id="contact">
+    <section id=\"contact\">
       <h2>Contact Us</h2>
       <p>Email: sales@cujosteel.com<br>Phone: (555) 123‑STEEL<br>Location: 1234 Mill Road, Forge City, NY</p>
     </section>
 
-    <section id="news">
+    <section id=\"news\">
       <h2>News</h2>
       <p>Check back soon for the latest updates and announcements from Cujo Steel.</p>
     </section>
   </main>
 
   <footer>
-    &copy; <span id="year"></span> Cujo Steel. All rights reserved.
+    &copy; <span id=\"year\"></span> Cujo Steel. All rights reserved.
   </footer>
 
   <script>
-    // Set footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Handle navigation switching
     const links = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('main section');
 
@@ -131,15 +158,24 @@
       link.addEventListener('click', e => {
         e.preventDefault();
 
-        // Activate link
+        // Update active link
         links.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
 
-        // Show corresponding section
+        // Find target section
         const target = link.getAttribute('data-section');
+
+        // Fade out all sections
         sections.forEach(section => {
-          section.classList.toggle('active', section.id === target);
+          section.classList.remove('show', 'fade-in');
         });
+
+        const newSection = document.getElementById(target);
+        newSection.classList.add('show');
+
+        // Force reflow for fade-in animation
+        void newSection.offsetWidth;
+        newSection.classList.add('fade-in');
       });
     });
   </script>
