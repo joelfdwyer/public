@@ -1,107 +1,148 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cujo Steel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f8f8f8;
+      color: #1a1a1a;
+    }
+    header {
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+      padding: 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #4f46e5;
+    }
+    nav {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #6366f1;
+      font-weight: 500;
+    }
+    nav a.active, nav a:hover {
+      color: #1e3a8a;
+      text-decoration: underline;
+    }
+    main {
+      padding: 2rem;
+      min-height: 60vh;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      border-bottom: 2px solid #a5b4fc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: #1e3a8a;
+    }
+    footer {
+      text-align: center;
+      background-color: white;
+      color: #666;
+      padding: 1rem;
+      border-top: 1px solid #ddd;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
 
-export default function CujoSteel() {
-  const [activeSection, setActiveSection] = useState("home");
+  <header>
+    <h1>Cujo Steel</h1>
+    <nav>
+      <a href="#" data-section="home" class="active">Home</a>
+      <a href="#" data-section="products">Our Products</a>
+      <a href="#" data-section="quality">Our Quality</a>
+      <a href="#" data-section="team">Our Sales Team</a>
+      <a href="#" data-section="history">Our History</a>
+      <a href="#" data-section="contact">Contact Us</a>
+      <a href="#" data-section="news">News</a>
+    </nav>
+  </header>
 
-  const sections = ["home", "products", "quality", "team", "history", "contact", "news"];
+  <main>
+    <section id="home" class="active">
+      <h2>Welcome to Cujo Steel</h2>
+      <p>Forging strength and trust—Cujo Steel delivers premium specialty steel with uncompromising service and precision.</p>
+    </section>
 
-  return (
-    <div className="min-h-screen bg-zinc-100 text-gray-900 font-sans">
-      <header className="bg-white shadow-md p-4 border-b border-gray-300">
-        <h1 className="text-4xl font-bold text-indigo-700">Cujo Steel</h1>
-        <nav className="mt-2 flex flex-wrap gap-4 text-indigo-500">
-          {sections.map((section) => (
-            <button
-              key={section}
-              onClick={() => setActiveSection(section)}
-              className={`hover:text-indigo-700 transition-all duration-200 ${activeSection === section ? "underline underline-offset-4 text-indigo-700" : ""}`}
-            >
-              {section === "home"
-                ? "Home"
-                : section === "products"
-                ? "Our Products"
-                : section === "quality"
-                ? "Our Quality"
-                : section === "team"
-                ? "Our Sales Team"
-                : section === "history"
-                ? "Our History"
-                : section === "contact"
-                ? "Contact Us"
-                : "News"}
-            </button>
-          ))}
-        </nav>
-      </header>
+    <section id="products">
+      <h2>Our Products</h2>
+      <p>We offer a full line of carbon, alloy, and tool steels—cut to spec, heat treated, and ready for machining or fabrication.</p>
+    </section>
 
-      <main className="p-6 pt-10 space-y-16 min-h-[60vh] relative">
-        <AnimatePresence mode="wait">
-          <motion.section
-            key={activeSection}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.5 }}
-            className="w-full absolute top-0 left-0"
-          >
-            <div className="relative z-10">
-              {activeSection === "home" && (
-                <div id="home">
-                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Welcome to Cujo Steel</h2>
-                  <p className="text-lg">Forging strength and trust—Cujo Steel delivers premium specialty steel with uncompromising service and precision.</p>
-                </div>
-              )}
+    <section id="quality">
+      <h2>Our Quality</h2>
+      <p>Every bar, plate, and billet is backed by certified metallurgical reports. Our lab ensures conformance to ASTM, SAE, and customer specs.</p>
+    </section>
 
-              {activeSection === "products" && (
-                <div id="products">
-                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Our Products</h2>
-                  <p>We offer a full line of carbon, alloy, and tool steels—cut to spec, heat treated, and ready for machining or fabrication.</p>
-                </div>
-              )}
+    <section id="team">
+      <h2>Our Sales Team</h2>
+      <p>Meet the experienced professionals who understand your needs—whether you're buying a truckload or a single piece for prototyping.</p>
+    </section>
 
-              {activeSection === "quality" && (
-                <div id="quality">
-                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Our Quality</h2>
-                  <p>Every bar, plate, and billet is backed by certified metallurgical reports. Our lab ensures conformance to ASTM, SAE, and customer specs.</p>
-                </div>
-              )}
+    <section id="history">
+      <h2>Our History</h2>
+      <p>Founded by veterans of the specialty steel trade, Cujo Steel blends tradition with innovation in every product we ship.</p>
+    </section>
 
-              {activeSection === "team" && (
-                <div id="team">
-                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Our Sales Team</h2>
-                  <p>Meet the experienced professionals who understand your needs—whether you're buying a truckload or a single piece for prototyping.</p>
-                </div>
-              )}
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Email: sales@cujosteel.com<br>Phone: (555) 123‑STEEL<br>Location: 1234 Mill Road, Forge City, NY</p>
+    </section>
 
-              {activeSection === "history" && (
-                <div id="history">
-                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Our History</h2>
-                  <p>Founded by veterans of the specialty steel trade, Cujo Steel blends tradition with innovation in every product we ship.</p>
-                </div>
-              )}
+    <section id="news">
+      <h2>News</h2>
+      <p>Check back soon for the latest updates and announcements from Cujo Steel.</p>
+    </section>
+  </main>
 
-              {activeSection === "contact" && (
-                <div id="contact">
-                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">Contact Us</h2>
-                  <p>Email: sales@cujosteel.com<br/>Phone: (555) 123‑STEEL<br/>Location: 1234 Mill Road, Forge City, NY</p>
-                </div>
-              )}
+  <footer>
+    &copy; <span id="year"></span> Cujo Steel. All rights reserved.
+  </footer>
 
-              {activeSection === "news" && (
-                <div id="news">
-                  <h2 className="text-2xl font-semibold border-b border-indigo-300 pb-2 mb-4">News</h2>
-                  <p>Check back soon for the latest updates and announcements from Cujo Steel.</p>
-                </div>
-              )}
-            </div>
-          </motion.section>
-        </AnimatePresence>
-      </main>
+  <script>
+    // Set footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-      <footer className="bg-white text-center p-4 text-sm text-gray-500 border-t border-gray-300">
-        &copy; {new Date().getFullYear()} Cujo Steel. All rights reserved.
-      </footer>
-    </div>
-  );
-}
+    // Handle navigation switching
+    const links = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('main section');
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+
+        // Activate link
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        // Show corresponding section
+        const target = link.getAttribute('data-section');
+        sections.forEach(section => {
+          section.classList.toggle('active', section.id === target);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
